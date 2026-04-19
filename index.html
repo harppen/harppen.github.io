@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Faiza Kamila</title>
+<link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  @font-face {
+    font-family: 'OCR A Extended';
+    src: local('OCR A Extended'), local('OCRAExtended'), local('OCRA');
+    font-weight: normal;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --font: 'Courier Prime', 'Courier New', monospace;
+    --black: #111;
+    --muted: #999;
+    --blue: #0000EE;
+    --bg: #fff;
+  }
+
+  body {
+    font-family: var(--font);
+    background: var(--bg);
+    color: var(--black);
+    overflow-x: hidden;
+  }
+
+  /* ── OPENING ── */
+  #opening {
+    position: fixed;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--bg);
+    cursor: pointer;
+    z-index: 100;
+    transition: opacity 0.5s ease;
+  }
+  #opening img { max-width: 480px; width: 70%; user-select: none; }
+  #opening.hide { opacity: 0; pointer-events: none; }
+
+  /* ── MAIN LAYOUT ── */
+  #main { opacity: 0; transition: opacity 0.5s ease; min-height: 100vh; display: flex; flex-direction: column; }
+  #main.show { opacity: 1; }
+
+  /* ── NAV ── */
+  nav {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    padding: 2rem 3rem 1.5rem;
+    background: var(--bg);
+    z-index: 10;
+  }
+  .logo {
+    font-family: 'OCR A Extended', 'OCR A', monospace;
+    font-size: 15px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 900;
+    color: #2563eb;
+
+  }
+  .nav-links { display: flex; gap: 2.5rem; }
+  .nav-links a {
+    font-family: var(--font);
+    font-size: 14px;
+    text-decoration: none;
+    color: var(--muted);
+    cursor: pointer;
+    letter-spacing: 0.05em;
+  }
+  .nav-links a.active { color: var(--blue); font-weight: 700; }
+
+  /* ── PAGES ── */
+  .page { display: none; flex: 1; }
+  .page.active { display: flex; }
+
+  /* ── ABOUT (DIARAHKAN AGAK KE ATAS) ── */
+  #page-about {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center; /* Tetap center tapi kita beri padding bottom agar naik */
+    transform: translateY(-150px);
+    text-align: center;
+  }
+  #page-about p { font-size: 16px; line-height: 1.8; }
+  #page-about .inquiry-label { color: var(--muted); margin-top: 2.5rem; font-size: 14px; }
+
+  /* ── DIGITAL PAINTING ── */
+  #page-digipaint {
+    padding: 1rem 3rem 2rem;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 3rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  .gallery-scroll {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    max-width: 750px;
+  }
+  .gallery-scroll img {
+    width: 100%;
+    height: auto;
+    max-height: 75vh;
+    object-fit: contain;
+  }
+  .sidebar-fixed {
+    position: sticky;
+    top: 2rem;
+    flex: 0 0 180px;
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+  .sidebar-fixed .shrimp-group img { width: 60px; height: 60px; }
+
+  /* ── SKETCHES (DIPERBESAR) ── */
+  #page-sketches {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 2rem;
+    padding-bottom: 5vh;
+    transform: translateY(-35px);
+  }
+  #page-sketches .sketch-img {
+    max-width: 430px; /* Ukuran gambar diperbesar */
+    width: 70%;
+    margin-bottom: 2.5rem;
+    opacity: 1;
+  }
+  #page-sketches .coming-soon {
+    font-size: 18px; /* Ukuran tulisan diperbesar */
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    font-weight: 400;
+  }
+</style>
+</head>
+<body>
+
+<div id="opening" onclick="enterSite()">
+  <img src="sketch-character.png" alt="opening illustration" />
+</div>
+
+<div id="main">
+  <nav>
+    <div class="logo">Faiza Kamila</div>
+    <div class="nav-links">
+      <a id="nav-about" class="active" onclick="showPage('about')">About</a>
+      <a id="nav-digipaint" onclick="showPage('digipaint')">Digital Painting</a>
+      <a id="nav-sketches" onclick="showPage('sketches')">Sketches</a>
+    </div>
+  </nav>
+
+  <div id="page-about" class="page active">
+    <div class="bio">
+      <p>I'm a bg painter who's currently learning</p>
+      <p>fundamentals. Here are some of my works.</p>
+    </div>
+    <p class="inquiry-label">For Inquiries:</p>
+    <p class="email">faizakhairunnisa96@gmail.com</p>
+  </div>
+
+  <div id="page-digipaint" class="page">
+    <div class="gallery-scroll">
+      <img src="bg-2.png" alt="BG painting 1" />
+      <img src="bg-1.png" alt="BG painting 2" />
+      <img src="bg-3.png" alt="BG painting bnw" />
+      <img src="bg-4.png" alt="BG painting bnw" />
+      <img src="still-1.png" alt="BG painting bnw" />
+      <img src="still-2.png" alt="BG painting bnw" />
+      <img src="still-3.png" alt="BG painting bnw" />
+    </div>
+    <div class="sidebar-fixed">
+      <div class="shrimp-group">
+        <img src="shrimp-1.png" alt="shrimp 1" />
+        <img src="shrimp-1.png" alt="shrimp 2" />
+      </div>
+      <div class="sidebar-email">faizakhairunnisa96<br>@gmail.com</div>
+    </div>
+  </div>
+
+  <div id="page-sketches" class="page">
+    <img src="sketch-character.png" 
+            alt="sketch" 
+            class="sketch-img" 
+            onclick="showPage('digipaint')" 
+            style="cursor: pointer;" />
+    <p class="coming-soon">Sketches is coming soon!</p>
+  </div>
+</div>
+
+<script>
+  function enterSite() {
+    document.getElementById('opening').classList.add('hide');
+    document.getElementById('main').classList.add('show');
+  }
+
+  function showPage(name) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+
+    const page = document.getElementById('page-' + name);
+    page.classList.add('active');
+    document.getElementById('nav-' + name).classList.add('active');
+    window.scrollTo(0, 0);
+  }
+</script>
+</body>
+</html>
