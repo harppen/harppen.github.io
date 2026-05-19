@@ -4,7 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Faiza Kamila</title>
+
 <link href="https://fonts.googleapis.com/css2?family=Courier+Prime:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+
 <style>
   @font-face {
     font-family: 'OCR A Extended';
@@ -12,7 +14,11 @@
     font-weight: normal;
   }
 
-  * { margin: 0; padding: 0; box-sizing: border-box; }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
   :root {
     --font: 'Courier Prime', 'Courier New', monospace;
@@ -29,7 +35,8 @@
     overflow-x: hidden;
   }
 
-  /* ── OPENING ── */
+  /* ───────── OPENING ───────── */
+
   #opening {
     position: fixed;
     inset: 0;
@@ -41,14 +48,34 @@
     z-index: 100;
     transition: opacity 0.5s ease;
   }
-  #opening img { max-width: 480px; width: 70%; user-select: none; }
-  #opening.hide { opacity: 0; pointer-events: none; }
 
-  /* ── MAIN LAYOUT ── */
-  #main { opacity: 0; transition: opacity 0.5s ease; min-height: 100vh; display: flex; flex-direction: column; }
-  #main.show { opacity: 1; }
+  #opening img {
+    max-width: 480px;
+    width: 70%;
+    user-select: none;
+  }
 
-  /* ── NAV ── */
+  #opening.hide {
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  /* ───────── MAIN ───────── */
+
+  #main {
+    opacity: 0;
+    transition: opacity 0.5s ease;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+  }
+
+  #main.show {
+    opacity: 1;
+  }
+
+  /* ───────── NAVIGATION ───────── */
+
   nav {
     display: flex;
     align-items: baseline;
@@ -57,6 +84,7 @@
     background: var(--bg);
     z-index: 10;
   }
+
   .logo {
     font-family: 'OCR A Extended', 'OCR A', monospace;
     font-size: 15px;
@@ -64,9 +92,13 @@
     text-transform: uppercase;
     font-weight: 900;
     color: #2563eb;
-
   }
-  .nav-links { display: flex; gap: 2.5rem; }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+  }
+
   .nav-links a {
     font-family: var(--font);
     font-size: 14px;
@@ -75,25 +107,48 @@
     cursor: pointer;
     letter-spacing: 0.05em;
   }
-  .nav-links a.active { color: var(--blue); font-weight: 700; }
 
-  /* ── PAGES ── */
-  .page { display: none; flex: 1; }
-  .page.active { display: flex; }
+  .nav-links a.active {
+    color: var(--blue);
+    font-weight: 700;
+  }
 
-  /* ── ABOUT (DIARAHKAN AGAK KE ATAS) ── */
+  /* ───────── PAGES ───────── */
+
+  .page {
+    display: none;
+    flex: 1;
+  }
+
+  .page.active {
+    display: flex;
+  }
+
+  /* ───────── ABOUT ───────── */
+
   #page-about {
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Tetap center tapi kita beri padding bottom agar naik */
+    justify-content: center;
     transform: translateY(-150px);
     text-align: center;
   }
-  #page-about p { font-size: 16px; line-height: 1.8; }
-  #page-about .inquiry-label { color: var(--muted); margin-top: 2.5rem; font-size: 14px; }
 
-  /* ── DIGITAL PAINTING ── */
-  #page-digipaint {
+  #page-about p {
+    font-size: 16px;
+    line-height: 1.8;
+  }
+
+  #page-about .inquiry-label {
+    color: var(--muted);
+    margin-top: 2.5rem;
+    font-size: 14px;
+  }
+
+  /* ───────── GALLERY LAYOUT (DIGIPAINT + SKETCHES) ───────── */
+
+  #page-digipaint,
+  #page-sketches {
     padding: 1rem 3rem 2rem;
     align-items: flex-start;
     justify-content: center;
@@ -101,6 +156,7 @@
     max-width: 1200px;
     margin: 0 auto;
   }
+
   .gallery-scroll {
     flex: 1;
     display: flex;
@@ -108,12 +164,14 @@
     gap: 2rem;
     max-width: 750px;
   }
+
   .gallery-scroll img {
     width: 100%;
     height: auto;
     max-height: 75vh;
     object-fit: contain;
   }
+
   .sidebar-fixed {
     position: sticky;
     top: 2rem;
@@ -122,103 +180,213 @@
     flex-direction: column;
     gap: 1.5rem;
   }
-  .sidebar-fixed .shrimp-group img { width: 60px; height: 60px; }
 
-  /* ── SKETCHES (DIPERBESAR) ── */
-  #page-sketches {
+  .shrimp-group {
+    display: flex;
     flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    padding: 2rem;
-    padding-bottom: 5vh;
-    transform: translateY(-35px);
+    gap: 0.5rem;
   }
-  #page-sketches .sketch-img {
-    max-width: 430px; /* Ukuran gambar diperbesar */
-    width: 70%;
-    margin-bottom: 2.5rem;
-    opacity: 1;
+
+  .sidebar-fixed .shrimp-group img {
+    width: 60px;
+    height: 60px;
   }
-  #page-sketches .coming-soon {
-    font-size: 18px; /* Ukuran tulisan diperbesar */
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    font-weight: 400;
+
+  .sidebar-email {
+    line-height: 1.8;
+  }
+
+  /* ───────── MOBILE ───────── */
+
+  @media (max-width: 768px) {
+
+    nav {
+      flex-direction: column;
+      gap: 1rem;
+      padding: 2rem 1.5rem;
+    }
+
+    .nav-links {
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+
+    #page-digipaint,
+    #page-sketches {
+      flex-direction: column;
+      padding: 1rem 1.5rem 2rem;
+    }
+
+    .sidebar-fixed {
+      position: static;
+      width: 100%;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    #page-about {
+      transform: translateY(-80px);
+      padding: 0 1.5rem;
+    }
+
+    #page-about p {
+      font-size: 15px;
+    }
   }
 </style>
 </head>
+
 <body>
+
+<!-- OPENING -->
 
 <div id="opening" onclick="enterSite()">
   <img src="sketch-character.png" alt="opening illustration" />
 </div>
 
+<!-- MAIN -->
+
 <div id="main">
+
+  <!-- NAV -->
+
   <nav>
     <div class="logo">Faiza Kamila</div>
+
     <div class="nav-links">
       <a id="nav-about" class="active" onclick="showPage('about')">About</a>
-      <a id="nav-digipaint" onclick="showPage('digipaint')">Digital Painting</a>
-      <a id="nav-sketches" onclick="showPage('sketches')">Sketches</a>
+
+      <a id="nav-digipaint" onclick="showPage('digipaint')">
+        Digital Painting
+      </a>
+
+      <a id="nav-sketches" onclick="showPage('sketches')">
+        Sketches
+      </a>
     </div>
   </nav>
 
+  <!-- ABOUT -->
+
   <div id="page-about" class="page active">
+
     <div class="bio">
       <p>I'm a bg painter who's currently learning</p>
       <p>fundamentals. Here are some of my works.</p>
     </div>
+
     <p class="inquiry-label">For Inquiries:</p>
     <p class="email">faizakhairunnisa96@gmail.com</p>
+
   </div>
 
+  <!-- DIGITAL PAINTING -->
+
   <div id="page-digipaint" class="page">
+
     <div class="gallery-scroll">
+
       <img src="bg-2.png" alt="BG painting 1" />
       <img src="bg-1.png" alt="BG painting 2" />
-      <img src="bg-3.png" alt="BG painting bnw" />
-      <img src="bg-4.png" alt="BG painting bnw" />
-      <img src="bg-5.png" alt="BG painting bnw" />
-      <img src="still-1.png" alt="BG painting bnw" />
-      <img src="still-2.png" alt="BG painting bnw" />
-      <img src="still-3.png" alt="BG painting bnw" />
-      <img src="still-4.png" alt="BG painting bnw" />
+      <img src="bg-3.png" alt="BG painting 3" />
+      <img src="bg-4.png" alt="BG painting 4" />
+      <img src="bg-5.png" alt="BG painting 5" />
+
+      <img src="still-1.png" alt="Still frame 1" />
+      <img src="still-2.png" alt="Still frame 2" />
+      <img src="still-3.png" alt="Still frame 3" />
+      <img src="still-4.png" alt="Still frame 4" />
+
+      <img src="bg-6.jpg" alt="BG painting 3" />
+      <img src="bg-7.jpg" alt="BG painting 4" />
+      <img src="bg-8.jpg" alt="BG painting 5" />
+      <img src="bg-9.png" alt="BG painting 5" />
+      <img src="bg-10.png" alt="BG painting 5" />
+
     </div>
+
     <div class="sidebar-fixed">
+
       <div class="shrimp-group">
         <img src="shrimp-1.png" alt="shrimp 1" />
         <img src="shrimp-1.png" alt="shrimp 2" />
       </div>
-      <div class="sidebar-email">faizakhairunnisa96<br>@gmail.com</div>
+
+      <div class="sidebar-email">
+        faizakhairunnisa96<br>
+        @gmail.com
+      </div>
+
     </div>
+
   </div>
 
+  <!-- SKETCHES -->
+
   <div id="page-sketches" class="page">
-    <img src="sketch-character.png" 
-            alt="sketch" 
-            class="sketch-img" 
-            onclick="showPage('digipaint')" 
-            style="cursor: pointer;" />
-    <p class="coming-soon">Sketches is coming soon!</p>
+
+    <div class="gallery-scroll">
+
+      <img src="figur-1.png" alt="figure 1" />
+      <img src="figur-2.png" alt="figure 2" />
+      <img src="figur-3.png" alt="figure 3" />
+      <img src="figur-4.png" alt="figure 4" />
+      <img src="figur-5.jpg" alt="figure 1" />
+      <img src="figur-6.jpg" alt="figure 2" />
+      <img src="figur-7.jpg" alt="figure 3" />
+      <img src="figur-8.jpg" alt="figure 4" />
+      <img src="figur-9.jpg" alt="figure 1" />
+      <img src="figur-10.jpg" alt="figure 2" />
+      <img src="figur-11.jpg" alt="figure 3" />
+      <img src="figur-12.jpg" alt="figure 4" />
+
+    </div>
+
+    <div class="sidebar-fixed">
+
+      <div class="shrimp-group">
+        <img src="shrimp-1.png" alt="shrimp 1" />
+        <img src="shrimp-1.png" alt="shrimp 2" />
+      </div>
+
+      <div class="sidebar-email">
+        faizakhairunnisa96<br>
+        @gmail.com
+      </div>
+
+    </div>
+
   </div>
+
 </div>
 
 <script>
+
   function enterSite() {
     document.getElementById('opening').classList.add('hide');
     document.getElementById('main').classList.add('show');
   }
 
   function showPage(name) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+
+    document.querySelectorAll('.page')
+      .forEach(p => p.classList.remove('active'));
+
+    document.querySelectorAll('.nav-links a')
+      .forEach(a => a.classList.remove('active'));
 
     const page = document.getElementById('page-' + name);
+
     page.classList.add('active');
-    document.getElementById('nav-' + name).classList.add('active');
+
+    document.getElementById('nav-' + name)
+      .classList.add('active');
+
     window.scrollTo(0, 0);
   }
+
 </script>
+
 </body>
 </html>
